@@ -16,3 +16,17 @@
 
 
 
+## lab0 util
+
+### Boot xv6
+
+配置好环境后，实验代码切换到 `util` 分支然后用命令 `make qemu` 启动就行。
+
+这时候遇到了个报错：`user/sh.c:58:1: error: infinite recursion detected [-Werror=infinite-recursion]`
+
+参考 https://github.com/mit-pdos/xv6-riscv/issues/125，在 `user/sh.c` 里的 56 行添加一行 `__attribute__((noreturn))` 就解决了。
+
+### sleep
+
+文档里提示可以参考 `user/echo.c`, `user/grep.c`,  `user/rm.c` 如何处理命令行参数。
+
