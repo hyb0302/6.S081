@@ -18,9 +18,16 @@
 
 最后想着那就自己装个 gdb 吧，在网上搜到一篇[教程](https://zjp-cn.github.io/posts/rcore-gdb/)，跟着教程的前半部分下载了 gdb 源码（和文章里不同的是我下载的是15.1版本的 gdb），接着编译生成二进制文件，这个阶段大概需要十几分钟，生成之后试了下没啥问题。
 
-````shell
+````bash
 ../configure --prefix=/Users/huangyb/code/github-repositories/gdb-15.1/build-riscv64 --target=riscv64-unknown-elf --enable-tui=yes —with-gmp=/opt/homebrew/Cellar/gmp/6.3.0 —with-mpfr=/opt/homebrew/Cellar/mpfr/4.2.1
 ````
+
+最后用软链接把 `riscv64-unknown-elf-gdb` 链接到 `/usr/local/bin` 目录下，让 gdb 在全局可用。
+
+```bash
+cd /usr/local/bin
+sudo ln -s ~/code/github-repositories/gdb-15.1/build-riscv64/bin/riscv64-unknown-elf-gdb ./riscv64-unknown-elf-gdbs
+```
 
 
 
